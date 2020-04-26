@@ -1,0 +1,20 @@
+package br.com.secia.apisecia.model;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+@Data
+@Entity
+@Table(name="TB_CLIENT")
+public class Client implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer codigo;
+    private String nome;
+    private String cnpj;
+
+}

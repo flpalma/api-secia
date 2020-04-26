@@ -17,7 +17,8 @@ public class Task implements Serializable {
     private String titulo;
     private Date data;
     private String prioridade;
-    private Integer codigoCliente;
+    @ManyToOne(targetEntity = Client.class)
+    private Client cliente;
     private Integer codigoLocal;
     private String descricao;
 

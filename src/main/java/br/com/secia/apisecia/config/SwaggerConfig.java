@@ -23,7 +23,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("br.com.secia.apisecia"))
-                .paths(regex("/tasks.*"))
+                .paths(regex("/*.*"))
                 .build()
                 .apiInfo(metaInfo());
     }
@@ -32,13 +32,13 @@ public class SwaggerConfig {
 
         ApiInfo apiInfo = new ApiInfo(
                 "Tasks API REST",
-                "API REST de cadastro de tasks.",
+                "API REST",
                 "1.0",
                 "Terms of Service",
                 new Contact("Felipe Locks Palma e Rodrigo Jornooki", "https://github.com/flpalma/api-secia",
                         "felipe.lp27@gmail.com,rodrigojornooki@gmail.com"),
                 "Apache License Version 2.0",
-                "https://www.apache.org/licesen.html", new ArrayList<VendorExtension>()
+                "https://www.apache.org/", new ArrayList<VendorExtension>()
         );
 
         return apiInfo;

@@ -15,6 +15,7 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer codigo;
     private String nome;
+    private String email;
     private String cnpj;
 
 }

@@ -12,7 +12,7 @@ MAVEN<br/>
 LOMBOK<br/><br/>
 
 Para executar o projeto, navegue até a raiz e digite, após ter o maven e a JDK8 instalados no computador:<br/>
-mvn clean install spring-boot:repackage<br/>
+mvn spring-boot:run<br/>
 
 Para acessar o swagger: http://localhost:8080/swagger-ui.html<br/>
 

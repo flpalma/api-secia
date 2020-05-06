@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
-import static br.com.secia.apisecia.JdbcUtils.*;
+import static br.com.secia.apisecia.utils.JdbcUtils.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

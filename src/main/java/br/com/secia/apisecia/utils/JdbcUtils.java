@@ -1,4 +1,4 @@
-package br.com.secia.apisecia;
+package br.com.secia.apisecia.utils;
 
 public class JdbcUtils {
 

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class TaskController {
     @GetMapping("/findAll")
     @ResponseBody
     @ApiOperation(value = "Listar todas as Tasks")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public List<Task> findAll(){
         return taskService.findAll();
     }
@@ -30,6 +32,7 @@ public class TaskController {
     @PostMapping("/save")
     @ResponseBody
     @ApiOperation(value = "Gravar Task")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public ResponseEntity<Task> save(@RequestBody Task task) {
         taskService.save(task);
         return new ResponseEntity<Task>(task, HttpStatus.CREATED);

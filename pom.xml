@@ -11,7 +11,7 @@
 	<groupId>br.com.secia</groupId>
 	<artifactId>api-secia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>api-secia</name>
 	<description>Gestão da Qualidade</description>
 

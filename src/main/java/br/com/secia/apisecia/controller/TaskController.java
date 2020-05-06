@@ -20,14 +20,14 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping("/findAll")
     @ResponseBody
     @ApiOperation(value = "Listar todas as Tasks")
     public List<Task> findAll(){
         return taskService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/save")
     @ResponseBody
     @ApiOperation(value = "Gravar Task")
     public ResponseEntity<Task> save(@RequestBody Task task) {

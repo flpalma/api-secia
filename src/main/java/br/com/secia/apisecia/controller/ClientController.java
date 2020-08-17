@@ -25,7 +25,7 @@ public class ClientController {
     @GetMapping("/findAll")
     @ResponseBody
     @ApiOperation(value = "Listar todas os Clientes")
-    @PreAuthorize("hasRole('ROLE_PAGINA_CLIENTES')")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public List<Client> findAll(){
         return clientService.findAll();
     }
@@ -33,7 +33,7 @@ public class ClientController {
     @PostMapping("/save")
     @ResponseBody
     @ApiOperation(value = "Gravar Cliente")
-    @PreAuthorize("hasRole('ROLE_PAGINA_CLIENTES')")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public ResponseEntity<Client> save(@RequestBody Client client) {
         clientService.save(client);
         return new ResponseEntity<Client>(client, HttpStatus.CREATED);

@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 import static br.com.secia.apisecia.utils.JdbcUtils.*;
 
+import br.com.secia.apisecia.model.User;
+import br.com.secia.apisecia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,6 +31,9 @@ public class SeciaUserDetailsService implements UserDetailsService {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
@@ -100,5 +105,9 @@ public class SeciaUserDetailsService implements UserDetailsService {
         ps.close();
 
         return permissoes;
+    }
+
+    public User buscarUsuarioPorEmail(String email) {
+        return repository.findByLogin(email);
     }
 }

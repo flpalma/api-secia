@@ -12,7 +12,7 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codigo;
+    private Long codigo;
     private String nome;
     private String email;
     private String cnpj;

@@ -22,4 +22,8 @@ public class ClientService {
     public Client save(Client client) {
         return clientRepository.save(client);
     }
+
+    public void delete(Long codigo) {
+        clientRepository.deleteById(codigo);
+    }
 }

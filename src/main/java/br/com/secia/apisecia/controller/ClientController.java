@@ -5,6 +5,7 @@ import br.com.secia.apisecia.service.ClientService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +27,7 @@ public class ClientController {
     @ResponseBody
     @ApiOperation(value = "Listar todas os Clientes")
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
+    @Cacheable
     public List<Client> findAll(){
         return clientService.findAll();
     }
@@ -37,6 +39,24 @@ public class ClientController {
     public ResponseEntity<Client> save(@RequestBody Client client) {
         clientService.save(client);
         return new ResponseEntity<Client>(client, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/atualiza")
+    @ResponseBody
+    @ApiOperation(value = "Gravar Cliente")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
+    public ResponseEntity<Client> atualiza(@RequestBody Client client) {
+        clientService.save(client);
+        return new ResponseEntity<Client>(client, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{codigo}")
+    @ResponseBody
+    @ApiOperation(value = "Deletar Cliente")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
+    public ResponseEntity<?> delete(@PathVariable Long codigo) {
+        clientService.delete(codigo);
+        return ResponseEntity.ok().build();
     }
 
 }

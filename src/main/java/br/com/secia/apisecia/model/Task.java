@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -19,17 +20,17 @@ public class Task implements Serializable {
 
     private String titulo;
 
-    private Date data;
+    private LocalDate data;
 
-    private Date dataPrevisaoAtendimento;
+    private LocalDate dataPrevisaoAtendimento;
 
     @Enumerated(EnumType.STRING)
     private PrioridadeEnum prioridade;
 
     @Enumerated(EnumType.STRING)
-    private StatusEnum status;
+    private StatusEnum status = StatusEnum.ABERTO;
 
-    @ManyToOne(targetEntity = Client.class)
+    @ManyToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
     private Client cliente;
 
     @ManyToOne(targetEntity = User.class)

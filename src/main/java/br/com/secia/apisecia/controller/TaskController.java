@@ -1,8 +1,8 @@
 package br.com.secia.apisecia.controller;
 
+import br.com.secia.apisecia.dto.PrioritiesDto;
 import br.com.secia.apisecia.dto.TaskDto;
 import br.com.secia.apisecia.dto.TaskDtoResponse;
-import br.com.secia.apisecia.model.Task;
 import br.com.secia.apisecia.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,6 +28,16 @@ public class TaskController {
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public List<TaskDtoResponse> findAll() {
         return TaskDtoResponse.convert(taskService.findAll());
+    }
+
+    @GetMapping("/findPriorities/{email}")
+    @ApiOperation(value = "Listar todas as Tasks")
+    @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
+    public PrioritiesDto findPriorities(@PathVariable( "email" ) String email) {
+        if("null".equals(email)) {
+            email = null;
+        }
+        return taskService.findPriorities(email);
     }
 
     @PostMapping("/save")

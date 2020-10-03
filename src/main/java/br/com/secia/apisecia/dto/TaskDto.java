@@ -21,10 +21,6 @@ public class TaskDto {
     private StatusEnum status;
     private Long cliente;
     private String usuario;
-    private Integer codigoLocal;
     private String descricao;
-
-
-
 
 }

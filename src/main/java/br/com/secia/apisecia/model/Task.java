@@ -36,8 +36,6 @@ public class Task implements Serializable {
     @ManyToOne(targetEntity = User.class)
     private User usuario;
 
-    private Integer codigoLocal;
-
     private String descricao;
 
 }

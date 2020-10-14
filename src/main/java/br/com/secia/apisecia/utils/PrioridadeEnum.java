@@ -6,7 +6,7 @@ public enum PrioridadeEnum {
 
     URGENTE("URGENTE"),
     ALTA("ALTA"),
-    MEDIA("MÉDIA"),
+    MEDIA("MEDIA"),
     BAIXA("BAIXA");
 
 

@@ -5,6 +5,7 @@ import br.com.secia.apisecia.service.ClientService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,14 @@ public class ClientController {
     @ResponseBody
     @ApiOperation(value = "Listar todas os Clientes")
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
-    @Cacheable
+    @Cacheable(value = "listaDeClientes")
     public List<Client> findAll(){
         return clientService.findAll();
     }
 
     @PostMapping("/save")
     @ResponseBody
+    @CacheEvict(value = "listaDeClientes", allEntries = true)
     @ApiOperation(value = "Gravar Cliente")
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public ResponseEntity<Client> save(@RequestBody Client client) {
@@ -43,6 +45,7 @@ public class ClientController {
 
     @PutMapping("/atualiza")
     @ResponseBody
+    @CacheEvict(value = "listaDeClientes", allEntries = true)
     @ApiOperation(value = "Gravar Cliente")
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public ResponseEntity<Client> atualiza(@RequestBody Client client) {
@@ -52,6 +55,7 @@ public class ClientController {
 
     @DeleteMapping("/delete/{codigo}")
     @ResponseBody
+    @CacheEvict(value = "listaDeClientes", allEntries = true)
     @ApiOperation(value = "Deletar Cliente")
     @PreAuthorize("hasRole('ROLE_PAGINA_TASKS')")
     public ResponseEntity<?> delete(@PathVariable Long codigo) {
